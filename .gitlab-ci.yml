@@ -3,13 +3,12 @@ stages:
   - build
   - test
 
-# Cache basé sur package-lock.json — évite la pollution entre branches
-# et évite de cacher node_modules/ (npm ci le supprime de toute façon).
 variables:
   NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.npm"
-  # ⚠️ Adapte ces trois variables à ton projet
-  QA_API_URL:    "http://ton-backend:8000/api"
-  QA_PROJECT_ID: "1"
+  QA_API_URL:       "http://ton-backend:8000/api"
+  QA_PROJECT_ID:    "1"
+  # Chemin de sortie du rapport JSON Playwright (lu par _parse_json_report)
+  PLAYWRIGHT_JSON_OUTPUT_NAME: "test-results/report.json"
 
 cache:
   key:
@@ -34,8 +33,6 @@ build_app:
   stage: build
   image: node:20
   script:
-    # npm ci ici rend ce job autonome — le cache GitLab est du best-effort,
-    # pas une garantie (premier run, cache évincé...).
     - npm ci
     - npm run build
   artifacts:
@@ -48,23 +45,16 @@ build_app:
 # ─────────────────────────────────────
 playwright_tests:
   stage: test
-  # ✅ FIX — image alignée sur @playwright/test ^1.60.0 dans package.json
-  # L'image précédente (v1.54.2) était incompatible → navigateurs non utilisés
   image: mcr.microsoft.com/playwright:v1.60.0-jammy
+  allow_failure: true   # les échecs de tests n'arrêtent pas la pipeline
   script:
     - npm ci
-
-    # L'image officielle contient déjà les navigateurs pour v1.60.0.
-    # Cette ligne est en sécurité au cas où la version dans package.json
-    # diverge légèrement de l'image (résout automatiquement).
     - npx playwright install --with-deps
 
-    # Lance les tests — "|| true" pour ne pas bloquer le rapport même si des tests échouent
-    - npx playwright test --reporter=list,json || true
+    # Lance les tests — rapport list (console) + json (fichier)
+    - npx playwright test --reporter=list,json
 
     # ── Reporter les résultats au QA AI Platform ──────────────────────────
-    # Appelle POST /api/projects/{project_id}/executions/run pour déclencher
-    # une exécution et mettre à jour coverage/status dans la plateforme.
     - |
       echo "Envoi des résultats au QA AI Platform..."
       HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
@@ -73,7 +63,7 @@ playwright_tests:
         -H "Content-Type: application/json")
       echo "API réponse : ${HTTP_STATUS}"
       if [ "$HTTP_STATUS" != "200" ]; then
-        echo "⚠️  API non disponible (${HTTP_STATUS}) — les résultats ne sont pas remontés"
+        echo "⚠️  API non disponible (${HTTP_STATUS}) — résultats non remontés"
       else
         echo "✅ Résultats envoyés au QA AI Platform"
       fi
