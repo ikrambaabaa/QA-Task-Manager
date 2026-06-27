@@ -1,22 +1,78 @@
 stages:
   - install
   - build
+  - test
+
+# ⚠️ FIX 1 — node_modules/ n'est PAS ce qu'il faut mettre en cache ici.
+# `npm ci` (utilisé partout ci-dessous, contrairement à l'original qui
+# mélangeait `npm install` et `npm ci`) SUPPRIME systématiquement
+# node_modules/ avant de réinstaller depuis package-lock.json — donc le
+# cache de node_modules/ ne sert STRICTEMENT À RIEN avec npm ci, quel que
+# soit son contenu. Ce qui accélère réellement npm ci, c'est le cache de
+# TÉLÉCHARGEMENT npm (le dossier pointé par NPM_CONFIG_CACHE) : les paquets
+# sont déjà présents localement, seule l'extraction/le linking est refait.
+#
+# ⚠️ FIX 2 — aucune `key` n'était définie sur le cache original. Sans clé
+# explicite, le cache peut être partagé/écrasé de façon incohérente entre
+# branches ayant des dépendances différentes. `key: files: [...]` régénère
+# automatiquement la clé dès que package-lock.json change.
+variables:
+  NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.npm"
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
 
 install_dependencies:
   stage: install
   image: node:20
-
   script:
-    - npm install
+    # ⚠️ FIX 3 — `npm install` remplacé par `npm ci` : installation
+    # déterministe à partir de package-lock.json, cohérente avec les deux
+    # autres jobs (qui utilisaient déjà/désormais npm ci). Ce job sert de
+    # garde-fou "fail fast" (échec d'installation détecté avant de lancer
+    # build/test) et préchauffe le cache npm pour les jobs suivants.
+    - npm ci
 
 build_app:
   stage: build
   image: node:20
-
   script:
-    - npm install
+    # ⚠️ FIX 4 (le plus important) — ce job ne réinstallait JAMAIS ses
+    # dépendances et comptait uniquement sur le cache pour avoir
+    # node_modules/ disponible. Le cache GitLab CI est du best-effort, PAS
+    # une garantie : premier run de pipeline, cache manquant/évincé, runner
+    # sans stockage de cache partagé... → `npm run build` plantait avec
+    # "command not found" / modules manquants dans ces cas. `npm ci`
+    # rend ce job autonome et fiable, peu importe l'état du cache.
+    - npm ci
     - npm run build
-
   artifacts:
     paths:
       - dist/
+    expire_in: 1 week
+
+playwright_tests:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.54.2-jammy
+  script:
+    - npm ci
+    # ⚠️ FIX 5 — l'image officielle mcr.microsoft.com/playwright:v1.54.2-jammy
+    # contient DÉJÀ les navigateurs préinstallés pour la version 1.54.2.
+    # `npx playwright install --with-deps` était donc redondant ici et
+    # ralentissait le pipeline (téléchargement + apt install inutiles).
+    # ⚠️ POINT DE VIGILANCE : la version de l'image DOIT correspondre
+    # exactement à la version de @playwright/test dans package.json. Si ce
+    # n'est pas garanti dans ce projet (mise à jour de l'une sans l'autre),
+    # remets `npx playwright install --with-deps` en sécurité, ou mieux,
+    # automatise la synchro des deux versions.
+    - npx playwright test
+  artifacts:
+    when: always
+    paths:
+      - playwright-report/
+      - test-results/
+    expire_in: 1 week
