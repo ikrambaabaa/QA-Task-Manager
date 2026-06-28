@@ -9,6 +9,8 @@ variables:
   QA_PROJECT_ID:    "1"
   # Chemin de sortie du rapport JSON Playwright (lu par _parse_json_report)
   PLAYWRIGHT_JSON_OUTPUT_NAME: "test-results/report.json"
+  # ✏️ URL utilisée par les tests Playwright (doit matcher celle servie en CI)
+  BASE_URL: "http://localhost:5174"
 
 cache:
   key:
@@ -50,6 +52,12 @@ playwright_tests:
   script:
     - npm ci
     - npx playwright install --with-deps
+
+    # ✏️ Sert le build de production (dist/) sur le port 5174, en arrière-plan
+    - npx vite preview --port 5174 --strictPort &
+
+    # ✏️ Attend que le serveur réponde avant de lancer les tests (timeout 30s)
+    - npx wait-on http://localhost:5174 --timeout 30000
 
     # Lance les tests — rapport list (console) + json (fichier)
     - npx playwright test --reporter=list,json
