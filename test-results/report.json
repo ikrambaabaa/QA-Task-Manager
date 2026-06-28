@@ -1,0 +1,592 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\playwright.config.cjs",
+    "rootDir": "C:/Users/dell/Documents/test1/qa-task-manager/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/dell/Documents/test1/qa-task-manager/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/dell/Documents/test1/qa-task-manager/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "project_1.spec.cjs",
+      "file": "project_1.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "[TC-111] Tri alphabétique des tâches de A à Z",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3021,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-28T10:10:32.040Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "468bd3e99fafa1c1cd41-fee047625101b2bf1b4a",
+          "file": "project_1.spec.cjs",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "[TC-113] Annulation de la modification du titre d'une tâche",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2107,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-28T10:10:36.114Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "468bd3e99fafa1c1cd41-b2b0965d315b9c03181c",
+          "file": "project_1.spec.cjs",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "[TC-112] Modification réussie du titre d'une tâche existante",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6777,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]').first()\nExpected: \u001b[32m\"T\u001b[7mitre de tâche mis à jou\u001b[27mr\"\u001b[39m\nReceived: \u001b[31m\"T\u001b[7mâche à modifie\u001b[27mr\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <b data-task-title=\"Tâche à modifier\">Tâche à modifier</b>\u001b[22m\n\u001b[2m       - unexpected value \"Tâche à modifier\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]').first()\nExpected: \u001b[32m\"T\u001b[7mitre de tâche mis à jou\u001b[27mr\"\u001b[39m\nReceived: \u001b[31m\"T\u001b[7mâche à modifie\u001b[27mr\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <b data-task-title=\"Tâche à modifier\">Tâche à modifier</b>\u001b[22m\n\u001b[2m       - unexpected value \"Tâche à modifier\"\u001b[22m\n\n    at C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs:54:59",
+                    "location": {
+                      "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                      "column": 59,
+                      "line": 54
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 52 |\u001b[39m   \n \u001b[90m 53 |\u001b[39m   \u001b[90m// [normalize_playwright] assertion not.toBeVisible() supprimée — un champ de saisie (input) reste généralement présent dans le DOM d'une SPA\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 54 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-task-title]'\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'Titre de tâche mis à jour'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 55 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 56 |\u001b[39m\n \u001b[90m 57 |\u001b[39m test(\u001b[32m'[TC-117] Changement de priorité d\\'une tâche à Haute (Rouge)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                        "column": 59,
+                        "line": 54
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]').first()\nExpected: \u001b[32m\"T\u001b[7mitre de tâche mis à jou\u001b[27mr\"\u001b[39m\nReceived: \u001b[31m\"T\u001b[7mâche à modifie\u001b[27mr\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <b data-task-title=\"Tâche à modifier\">Tâche à modifier</b>\u001b[22m\n\u001b[2m       - unexpected value \"Tâche à modifier\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 52 |\u001b[39m   \n \u001b[90m 53 |\u001b[39m   \u001b[90m// [normalize_playwright] assertion not.toBeVisible() supprimée — un champ de saisie (input) reste généralement présent dans le DOM d'une SPA\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 54 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-task-title]'\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'Titre de tâche mis à jour'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 55 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 56 |\u001b[39m\n \u001b[90m 57 |\u001b[39m test(\u001b[32m'[TC-117] Changement de priorité d\\'une tâche à Haute (Rouge)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs:54:59\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-28T10:10:38.292Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\test-results\\project_1--TC-112-Modifica-ea920-titre-d-une-tâche-existante\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\test-results\\project_1--TC-112-Modifica-ea920-titre-d-une-tâche-existante\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                    "column": 59,
+                    "line": 54
+                  }
+                },
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7146,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]').first()\nExpected: \u001b[32m\"T\u001b[7mitre de tâche mis à jou\u001b[27mr\"\u001b[39m\nReceived: \u001b[31m\"T\u001b[7mâche à modifie\u001b[27mr\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <b data-task-title=\"Tâche à modifier\">Tâche à modifier</b>\u001b[22m\n\u001b[2m       - unexpected value \"Tâche à modifier\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]').first()\nExpected: \u001b[32m\"T\u001b[7mitre de tâche mis à jou\u001b[27mr\"\u001b[39m\nReceived: \u001b[31m\"T\u001b[7mâche à modifie\u001b[27mr\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <b data-task-title=\"Tâche à modifier\">Tâche à modifier</b>\u001b[22m\n\u001b[2m       - unexpected value \"Tâche à modifier\"\u001b[22m\n\n    at C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs:54:59",
+                    "location": {
+                      "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                      "column": 59,
+                      "line": 54
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 52 |\u001b[39m   \n \u001b[90m 53 |\u001b[39m   \u001b[90m// [normalize_playwright] assertion not.toBeVisible() supprimée — un champ de saisie (input) reste généralement présent dans le DOM d'une SPA\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 54 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-task-title]'\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'Titre de tâche mis à jour'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 55 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 56 |\u001b[39m\n \u001b[90m 57 |\u001b[39m test(\u001b[32m'[TC-117] Changement de priorité d\\'une tâche à Haute (Rouge)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                        "column": 59,
+                        "line": 54
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]').first()\nExpected: \u001b[32m\"T\u001b[7mitre de tâche mis à jou\u001b[27mr\"\u001b[39m\nReceived: \u001b[31m\"T\u001b[7mâche à modifie\u001b[27mr\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <b data-task-title=\"Tâche à modifier\">Tâche à modifier</b>\u001b[22m\n\u001b[2m       - unexpected value \"Tâche à modifier\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 52 |\u001b[39m   \n \u001b[90m 53 |\u001b[39m   \u001b[90m// [normalize_playwright] assertion not.toBeVisible() supprimée — un champ de saisie (input) reste généralement présent dans le DOM d'une SPA\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 54 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-task-title]'\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'Titre de tâche mis à jour'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 55 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 56 |\u001b[39m\n \u001b[90m 57 |\u001b[39m test(\u001b[32m'[TC-117] Changement de priorité d\\'une tâche à Haute (Rouge)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs:54:59\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-06-28T10:10:46.842Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\test-results\\project_1--TC-112-Modifica-ea920-titre-d-une-tâche-existante-retry1\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\test-results\\project_1--TC-112-Modifica-ea920-titre-d-une-tâche-existante-retry1\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                    "column": 59,
+                    "line": 54
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "468bd3e99fafa1c1cd41-a22b151b3eaf82163804",
+          "file": "project_1.spec.cjs",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "[TC-117] Changement de priorité d'une tâche à Haute (Rouge)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1925,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-28T10:10:56.368Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "468bd3e99fafa1c1cd41-516fd6753333ce75fcf5",
+          "file": "project_1.spec.cjs",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "[TC-114] Tentative de modification d'une tâche avec un titre vide",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1705,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-28T10:10:58.615Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "468bd3e99fafa1c1cd41-b7ee780052d014bfa3bc",
+          "file": "project_1.spec.cjs",
+          "line": 68,
+          "column": 1
+        },
+        {
+          "title": "[TC-115] Suppression de toutes les tâches après confirmation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6565,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs:90:51",
+                    "location": {
+                      "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                      "column": 51,
+                      "line": 90
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 88 |\u001b[39m   page\u001b[33m.\u001b[39mon(\u001b[32m'dialog'\u001b[39m\u001b[33m,\u001b[39m dialog \u001b[33m=>\u001b[39m dialog\u001b[33m.\u001b[39maccept())\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m   \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 90 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-task-title]'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 91 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 92 |\u001b[39m\n \u001b[90m 93 |\u001b[39m test(\u001b[32m'[TC-116] Annulation de la suppression de toutes les tâches'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                        "column": 51,
+                        "line": 90
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 88 |\u001b[39m   page\u001b[33m.\u001b[39mon(\u001b[32m'dialog'\u001b[39m\u001b[33m,\u001b[39m dialog \u001b[33m=>\u001b[39m dialog\u001b[33m.\u001b[39maccept())\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m   \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 90 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-task-title]'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 91 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 92 |\u001b[39m\n \u001b[90m 93 |\u001b[39m test(\u001b[32m'[TC-116] Annulation de la suppression de toutes les tâches'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs:90:51\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-28T10:11:00.373Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\test-results\\project_1--TC-115-Suppress-c58fb-s-tâches-après-confirmation\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\test-results\\project_1--TC-115-Suppress-c58fb-s-tâches-après-confirmation\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                    "column": 51,
+                    "line": 90
+                  }
+                },
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7100,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs:90:51",
+                    "location": {
+                      "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                      "column": 51,
+                      "line": 90
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 88 |\u001b[39m   page\u001b[33m.\u001b[39mon(\u001b[32m'dialog'\u001b[39m\u001b[33m,\u001b[39m dialog \u001b[33m=>\u001b[39m dialog\u001b[33m.\u001b[39maccept())\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m   \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 90 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-task-title]'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 91 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 92 |\u001b[39m\n \u001b[90m 93 |\u001b[39m test(\u001b[32m'[TC-116] Annulation de la suppression de toutes les tâches'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                        "column": 51,
+                        "line": 90
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-task-title]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-task-title]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 88 |\u001b[39m   page\u001b[33m.\u001b[39mon(\u001b[32m'dialog'\u001b[39m\u001b[33m,\u001b[39m dialog \u001b[33m=>\u001b[39m dialog\u001b[33m.\u001b[39maccept())\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m   \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 90 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-task-title]'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 91 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 92 |\u001b[39m\n \u001b[90m 93 |\u001b[39m test(\u001b[32m'[TC-116] Annulation de la suppression de toutes les tâches'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs:90:51\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-06-28T10:11:09.175Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\test-results\\project_1--TC-115-Suppress-c58fb-s-tâches-après-confirmation-retry1\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\test-results\\project_1--TC-115-Suppress-c58fb-s-tâches-après-confirmation-retry1\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\dell\\Documents\\test1\\qa-task-manager\\tests\\project_1.spec.cjs",
+                    "column": 51,
+                    "line": 90
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "468bd3e99fafa1c1cd41-5ed880bcaa0b7e4ca494",
+          "file": "project_1.spec.cjs",
+          "line": 82,
+          "column": 1
+        },
+        {
+          "title": "[TC-116] Annulation de la suppression de toutes les tâches",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2153,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-28T10:11:18.742Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "468bd3e99fafa1c1cd41-24e6d22911feae8945e3",
+          "file": "project_1.spec.cjs",
+          "line": 93,
+          "column": 1
+        },
+        {
+          "title": "[TC-118] Changement de priorité d'une tâche à Moyenne (Jaune)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1846,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-28T10:11:21.206Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "468bd3e99fafa1c1cd41-1c4b740b3e3a84e792a7",
+          "file": "project_1.spec.cjs",
+          "line": 105,
+          "column": 1
+        },
+        {
+          "title": "[TC-119] Changement de priorité d'une tâche à Basse (Vert)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1732,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-28T10:11:23.117Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "468bd3e99fafa1c1cd41-ac5aecd7bf14f6f6c2a1",
+          "file": "project_1.spec.cjs",
+          "line": 116,
+          "column": 1
+        },
+        {
+          "title": "[TC-120] Tentative de tri alphabétique sur une liste vide",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1384,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-28T10:11:24.915Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "468bd3e99fafa1c1cd41-647e6b45a55c6a67c5d1",
+          "file": "project_1.spec.cjs",
+          "line": 127,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-06-28T10:10:29.702Z",
+    "duration": 56976.814000000006,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

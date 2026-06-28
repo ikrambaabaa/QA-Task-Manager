@@ -4,13 +4,15 @@ stages:
   - test
 
 variables:
-  NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.npm"
-  QA_API_URL:       "http://ton-backend:8000/api"
-  QA_PROJECT_ID:    "1"
-  # Chemin de sortie du rapport JSON Playwright (lu par _parse_json_report)
+  NPM_CONFIG_CACHE:            "$CI_PROJECT_DIR/.npm"
+  # ⚠️ Doit être une URL ACCESSIBLE depuis le runner GitLab (donc ni
+  # 127.0.0.1, ni un hôte interne type "ton-backend") — sauf runner
+  # self-hosted sur le même réseau que le backend. Idéalement à définir
+  # en variable CI/CD (Settings > CI/CD > Variables) plutôt qu'en dur ici.
+  QA_API_URL:                  "http://ton-backend:8000/api"
+  QA_PROJECT_ID:               "1"
   PLAYWRIGHT_JSON_OUTPUT_NAME: "test-results/report.json"
-  # ✏️ URL utilisée par les tests Playwright (doit matcher celle servie en CI)
-  BASE_URL: "http://localhost:5174"
+  BASE_URL:                    "http://localhost:5174"
 
 cache:
   key:
@@ -48,32 +50,38 @@ build_app:
 playwright_tests:
   stage: test
   image: mcr.microsoft.com/playwright:v1.60.0-jammy
-  allow_failure: true   # les échecs de tests n'arrêtent pas la pipeline
+  allow_failure: true
+  dependencies:
+    - build_app
   script:
     - npm ci
     - npx playwright install --with-deps
-
-    # ✏️ Sert le build de production (dist/) sur le port 5174, en arrière-plan
     - npx vite preview --port 5174 --strictPort &
-
-    # ✏️ Attend que le serveur réponde avant de lancer les tests (timeout 30s)
     - npx wait-on http://localhost:5174 --timeout 30000
 
-    # Lance les tests — rapport list (console) + json (fichier)
-    - npx playwright test --reporter=list,json
+    # Lit playwright.config.js automatiquement — on force explicitement le
+    # reporter html en plus de list/json pour que playwright-report/ existe
+    # réellement (corrige le warning "no matching files" sur cet artefact).
+    - npx playwright test --reporter=list,json,html
 
-    # ── Reporter les résultats au QA AI Platform ──────────────────────────
+    # Envoi des résultats au QA AI Platform — strictement best-effort.
+    # ⚠️ Le "|| echo 000" est CRITIQUE : sans lui, un curl qui ne peut pas
+    # se connecter (API injoignable) fait échouer cette ligne, et GitLab
+    # arrête le job immédiatement (set -e implicite) avant même d'atteindre
+    # le bloc if/else censé gérer ce cas. C'est ce qui faisait échouer le
+    # job malgré des tests Playwright tous au vert.
     - |
       echo "Envoi des résultats au QA AI Platform..."
-      HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+      HTTP_STATUS=$(curl -s -o /dev/null -m 10 -w "%{http_code}" \
         -X POST \
         "${QA_API_URL}/projects/${QA_PROJECT_ID}/executions/run" \
-        -H "Content-Type: application/json")
+        -H "Content-Type: application/json" \
+        || echo "000")
       echo "API réponse : ${HTTP_STATUS}"
-      if [ "$HTTP_STATUS" != "200" ]; then
-        echo "⚠️  API non disponible (${HTTP_STATUS}) — résultats non remontés"
-      else
+      if [ "$HTTP_STATUS" = "200" ]; then
         echo "✅ Résultats envoyés au QA AI Platform"
+      else
+        echo "⚠️  API non disponible ou en erreur (code: ${HTTP_STATUS}) — résultats non remontés, mais le job ne plante plus pour autant."
       fi
 
   artifacts:
